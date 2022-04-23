@@ -1,6 +1,5 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { HomeView } from "../views";
 import Calculator from "components/Calculator";
 
 const Home: NextPage = (props) => {
@@ -10,7 +9,6 @@ const Home: NextPage = (props) => {
         <title>Box: A Raydium Solution</title>
         <meta name="description" content="Box: A Raydium Solution" />
       </Head>
-      <HomeView />
       <Calculator/>
     </div>
   )
