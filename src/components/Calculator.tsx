@@ -8,7 +8,7 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: '30vw',
-  height: '65vh',
+  height: '75vh',
   padding: '24px 40px',
   bgcolor: '#707070',
   //   border: '1px solid #9945FF',
@@ -98,7 +98,25 @@ const Calculator: FC = () => {
             </Tabs>
           </div>
           {/* ROI */}
-
+          <div className="flex flex-col justify-between items-start mt-6 w-full">
+            <div className="flex justify-between items-center w-full">
+              <Typography variant="subtitle1">ROI</Typography>
+              <Typography variant="subtitle1">- %</Typography>
+            </div>
+            <div className="flex flex-col justify-start items-center rounded px-5 py-2.5 bg-black bg-opacity-25 mt-2.5 w-full h-48">
+              <div className="flex justify-between items-center w-full">
+                <Typography variant="subtitle2" style={{color: '#DFDFDE'}}>Shares</Typography>
+                <Typography variant="subtitle2" style={{color: '#DFDFDE'}}>- (-%)</Typography>
+              </div>
+              <div className="flex justify-between items-center w-full mt-6">
+                <Typography variant="subtitle2" style={{color: '#DFDFDE'}}>Value of rewards</Typography>
+                <Typography variant="subtitle2" style={{color: '#DFDFDE'}}>$ -</Typography>
+              </div>
+              <div className="flex justify-start items-center w-full mt-6">
+                <Typography variant="subtitle2" style={{color: '#DFDFDE'}}>Reward tokens</Typography>
+              </div>
+            </div>
+          </div>
 
           {/* Stake Button */}
         </Box>
