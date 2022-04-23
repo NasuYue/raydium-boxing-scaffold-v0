@@ -1,9 +1,11 @@
 import { FC, useState } from 'react'
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui'
 import { useWallet } from '@solana/wallet-adapter-react'
-import { Percent } from 'react-feather'
 import Image from 'next/image'
-import Calculator from './Calculator'
+import { Box, Typography, Modal, Tabs, Tab } from '@mui/material'
+import { ChevronLeft, ChevronRight, CreditCard, Repeat } from 'react-feather'
+import boxLogo from '../assets/symbal/box.png'
+import rayLogo from '../assets/symbal/ray.png'
 
 const TOKENS = [
   'https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/5LSFpvLDkcdV2a3Kiyzmg5YmJsj2XDLySaXvnfP1cgLT/logo.png',
@@ -15,80 +17,144 @@ const TOKENS = [
 
 const Stake: FC = (props) => {
   const testColor = 'bg-[#707070]'
-  const [open, setOpen] = useState(false)
-  const handleOpen = () => setOpen(true)
-  const handleClose = () => setOpen(false)
+
+  const [tab, setTab] = useState(0)
+
+  const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+    setTab(newValue)
+  }
 
   const wallet = useWallet()
 
   return (
-    <>
-      <div className={`w-1/4 h-fit ${testColor} rounded-2xl p-4`}>
-        <div className="flex items-center pt-6 pb-2 relative flex-wrap">
-          <div className="flex items-center justify-center">
+    <div className="w-full flex flex-col justify-start items-center">
+      <Image src={boxLogo} width={120} height={120} />
+      <Typography variant="h5">
+        <div className="flex items-center">
+          EARN MORE BY <ChevronLeft size={32} /> <Typography variant="h4">boxRay</Typography> <ChevronRight size={32} />
+        </div>
+      </Typography>
+      <div className="mt-4">
+        <Typography variant="subtitle2">Stake Ray and use boxRay while earning rewards</Typography>
+      </div>
+      <div className="w-1/2 flex justify-between items-center mt-6 gap-4">
+        <div className="basis-1/3 h-28 py-5 px-6 bg-white bg-opacity-25 flex flex-col items-start rounded-2xl">
+          <Typography variant="subtitle1">Staking APY</Typography>
+          <Typography variant="h4">19.25%</Typography>
+        </div>
+        <div className="basis-2/3 h-28 py-5 px-6 bg-white bg-opacity-25 rounded-2xl flex">
+          <div className="basis-2/3">
+            <Typography variant="subtitle1">boxRay Balance</Typography>
+          </div>
+          <div className="basis-1/3 flex flex-col items-end">
             <div className="flex">
-              <div className="relative h-11 w-11 rounded-full border">
-                <Image
-                  src="https://sdk.raydium.io/icons/2FPyTwcZLUg1MDrwsyoP4D6s1tM7hAkHYRjkNb5w6Pxk.png"
-                  className="rounded-full"
-                  layout="fill"
-                />
-              </div>
-              <div className="relative h-11 w-11 rounded-full border -ml-1.5">
-                <Image
-                  className="rounded-full"
-                  src="https://sdk.raydium.io/icons/2wmKXX1xsxLfrvjEPrt2UHiqj8Gbzwxvffr9qmNjsw8g.png"
-                  layout="fill"
-                />
-              </div>
+              <Image src={boxLogo} width={40} height={40} />
+              <Typography variant="h4">14.690</Typography>
             </div>
-            <div className="flex flex-col pl-2">
-              <span className="pb-2">REF-wNEAR</span>
-              <button className="text-xs text-framBorder border border-framBorder rounded w-10 text-center box-content px-1">
-                Detail
-              </button>
-            </div>
+            <Typography variant="subtitle1">≈ 15.541 Ray</Typography>
           </div>
         </div>
-        <div className="flex justify-between items-center py-2">
-          <span className="text-sm">Total Staked:</span>
-          <span className="text-xl text-white">$14.12M</span>
-        </div>
-        <div className="flex justify-between items-center py-2">
-          <span className="text-sm flex">
-            APY <Percent size={20} className="ml-2 cursor-pointer border-2 rounded-md border-white text-white" onClick={handleOpen}/>
-          </span>
-          <span className="text-xl text-white">93.12%</span>
-        </div>
-        <div className="my-3.5 border border-t-0" />
-        <div className="flex justify-between items-center py-2">
-          <span className="text-sm">Reward Tokens</span>
-          <span className="flex">
-            {TOKENS.map((src) => (
-              <div className="relative h-5 w-5 ml-1.5 my-px">
-                <Image key={src} src={src} layout="fill" className="rounded-full" />
-              </div>
-            ))}
-          </span>
-        </div>
-        <div className="flex justify-between items-center py-2">
-          <span className="text-sm">Rewards per week</span>
-          <span>93.12%</span>
-        </div>
-        <div className="flex justify-between items-center py-2">
-          <span className="text-sm">Unclaimed rewards</span>
-          <span>93.12%</span>
-        </div>
-        {wallet.publicKey ? (
-          <button className="mt-4 mb-3 w-full rounded-full py-2 text-base bg-rose-300 p-5" onClick={handleOpen}>
-            Calculate APY
-          </button>
-        ) : (
-          <WalletMultiButton className="justify-center mt-4 mb-3 w-full rounded-full py-2 text-base bg-rose-300 p-5" />
-        )}
       </div>
-      <Calculator isOpen={open} handleClose={handleClose} />
-    </>
+      <div className="w-1/2 h-80 p-5 bg-white bg-opacity-25 flex flex-col items-start rounded-2xl m-4">
+        <Tabs
+          sx={{ width: '100%', backgroundColor: 'rgba(0,0,0,25%)', borderRadius: '0.8rem', marginTop: '8px' }}
+          value={tab}
+          onChange={handleChange}
+          textColor="inherit"
+          indicatorColor="secondary"
+          variant="fullWidth"
+        >
+          <Tab label="Stake" />
+          <Tab label="Unstake" />
+        </Tabs>
+
+        <div className="w-full h-full">
+          {tab === 0 && (
+            <>
+              <div className="w-full flex mt-6 gap-4">
+                <div className="basis-5/6 flex flex-col gap-2">
+                  <div className="w-full flex justify-between items-center">
+                    <div className="flex justify-between items-center gap-2 bg-black bg-opacity-25 p-2 rounded-md">
+                      <Repeat size={16} className="cursor-pointer" />
+                      <Typography variant="subtitle2">1 Ray = 0.xxxx boxRay</Typography>
+                    </div>
+                    <div className="flex justify-between items-center gap-2">
+                      <CreditCard />
+                      <Typography variant="subtitle2">Balance: 0</Typography>
+                    </div>
+                  </div>
+                  <input
+                    type="number"
+                    className="w-full h-10 text-lg text-white bg-transparent border rounded-md focus:ring-0 focus:outline-none"
+                    placeholder=" 0.0"
+                  />
+                </div>
+                <div className="basis-1/6 flex items-end">
+                  <div className="w-full flex justify-between items-center ">
+                    <Typography variant="h5">Ray</Typography>
+                    <Image src={rayLogo} width={60} height={60} />
+                  </div>
+                </div>
+              </div>
+              <div className="w-full flex flex-col gap-2 mt-10">
+                <div className="w-full flex justify-between items-center">
+                  <Typography variant="subtitle2">boxRay to receive</Typography>
+
+                  <Typography variant="subtitle2">0</Typography>
+                </div>
+                {wallet.publicKey ? (
+                  <button className="w-full rounded-md py-2 text-base bg-gray-500 p-5">Stake</button>
+                ) : (
+                  <WalletMultiButton className="justify-center w-full rounded-md py-2 text-base bg-gray-500 p-5" />
+                )}
+              </div>
+            </>
+          )}
+
+          {tab === 1 && (
+            <>
+              <div className="w-full flex mt-6 gap-4">
+                <div className="basis-full flex flex-col gap-2">
+                  <div className="w-full flex justify-between items-center">
+                    <div className="flex justify-between items-center gap-2 bg-black bg-opacity-25 p-2 rounded-md">
+                      <Repeat size={16} className="cursor-pointer" />
+                      <Typography variant="subtitle2">1 boxRay = 1.xxx Ray</Typography>
+                    </div>
+                    <div className="flex justify-between items-center gap-2">
+                      <CreditCard />
+                      <Typography variant="subtitle2">Balance: 0</Typography>
+                    </div>
+                  </div>
+                  <input
+                    type="number"
+                    className="w-full h-10 text-lg text-white bg-transparent border rounded-md focus:ring-0 focus:outline-none"
+                    placeholder=" 0.0"
+                  />
+                </div>
+                <div className="basis-3/12 flex items-end">
+                  <div className="w-full flex justify-between items-center ">
+                    <Typography variant="h5">boxRay</Typography>
+                    <Image src={boxLogo} width={60} height={60} />
+                  </div>
+                </div>
+              </div>
+              <div className="w-full flex flex-col gap-2 mt-10">
+                <div className="w-full flex justify-between items-center">
+                  <Typography variant="subtitle2">Ray to receive</Typography>
+
+                  <Typography variant="subtitle2">0</Typography>
+                </div>
+                {wallet.publicKey ? (
+                  <button className="w-full rounded-md py-2 text-base bg-gray-500 p-5">Unstake</button>
+                ) : (
+                  <WalletMultiButton className="justify-center w-full rounded-md py-2 text-base bg-gray-500 p-5" />
+                )}
+              </div>
+            </>
+          )}
+        </div>
+      </div>
+    </div>
   )
 }
 
