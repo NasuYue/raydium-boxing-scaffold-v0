@@ -1,4 +1,6 @@
 import { FC, useState } from 'react'
+import { WalletMultiButton } from '@solana/wallet-adapter-react-ui'
+import { useWallet } from '@solana/wallet-adapter-react'
 import { Percent } from 'react-feather'
 import Image from 'next/image'
 import Calculator from './Calculator'
@@ -15,6 +17,9 @@ const Farm: FC = (props) => {
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
+
+  const wallet = useWallet()
+
   return (
     <>
       <div className="w-fit h-fit bg-rose-200 rounded-2xl p-4">
@@ -50,7 +55,7 @@ const Farm: FC = (props) => {
         </div>
         <div className="flex justify-between items-center py-2">
           <span className="text-sm flex">
-            APY <Percent size={16} className="ml-2 cursor-pointer" onClick={handleOpen}/>
+            APY <Percent size={16} className="ml-2 cursor-pointer" onClick={handleOpen} />
           </span>
           <span className="text-xl text-white">93.12%</span>
         </div>
@@ -73,10 +78,15 @@ const Farm: FC = (props) => {
           <span className="text-sm">Unclaimed rewards</span>
           <span>93.12%</span>
         </div>
-        <button className="mt-4 mb-3 w-full rounded-full py-2 text-base bg-rose-300 p-5">CONNECT WALLET</button>
+        {wallet.publicKey ? (
+          <button className="mt-4 mb-3 w-full rounded-full py-2 text-base bg-rose-300 p-5" onClick={handleOpen}>
+            Calculate APY
+          </button>
+        ) : (
+          <WalletMultiButton className="justify-center mt-4 mb-3 w-full rounded-full py-2 text-base bg-rose-300 p-5" />
+        )}
       </div>
-
-      <Calculator isOpen={open} handleClose={handleClose}/>
+      <Calculator isOpen={open} handleClose={handleClose} />
     </>
   )
 }
