@@ -18,11 +18,8 @@ const style = {
   },
 }
 
-const Calculator: FC = () => {
-  const [open, setOpen] = useState(true)
+const Calculator = ({isOpen, handleClose}:{isOpen: boolean; handleClose: any;}) => {
   const [tab, setTab] = useState(0)
-  const handleOpen = () => setOpen(true)
-  const handleClose = () => setOpen(false)
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setTab(newValue)
@@ -32,7 +29,7 @@ const Calculator: FC = () => {
     <div>
       {/* <Button onClick={handleOpen}>Open modal</Button> */}
       <Modal
-        open={open}
+        open={isOpen}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
