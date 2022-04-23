@@ -1,5 +1,5 @@
 import { FC, useState } from 'react'
-import { Box, Typography, Modal, TextField } from '@mui/material'
+import { Box, Typography, Modal, Tabs, Tab } from '@mui/material'
 import { X as Close, Repeat } from 'react-feather'
 
 const style = {
@@ -20,8 +20,13 @@ const style = {
 
 const Calculator: FC = () => {
   const [open, setOpen] = useState(true)
+  const [tab, setTab] = useState(0)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
+
+  const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+    setTab(newValue)
+  }
 
   return (
     <div>
@@ -39,6 +44,8 @@ const Calculator: FC = () => {
             </Typography>
             <Close onClick={handleClose} className="cursor-pointer" />
           </div>
+
+          {/* Staked block */}
           <div className="flex flex-col justify-between items-start mt-6 w-full">
             <Typography variant="subtitle1">XXXX-XXXX LP staked</Typography>
             <div className="flex justify-between items-center rounded px-5 py-2.5 bg-black bg-opacity-25 mt-2.5 w-full">
@@ -73,9 +80,27 @@ const Calculator: FC = () => {
             </div>
           </div>
 
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
+          {/* Duration */}
+          <div className="flex flex-col mt-6">
+            <Typography variant="subtitle1">Duration</Typography>
+            <Tabs
+              sx={{ backgroundColor: 'rgba(0,0,0,25%)', borderRadius: '0.8rem', marginTop: '8px' }}
+              value={tab}
+              onChange={handleChange}
+              textColor="inherit"
+              indicatorColor="secondary"
+              variant="fullWidth"
+            >
+              <Tab label="1D" />
+              <Tab label="7D" />
+              <Tab label="30D" />
+              <Tab label="90D" />
+            </Tabs>
+          </div>
+          {/* ROI */}
+
+
+          {/* Stake Button */}
         </Box>
       </Modal>
     </div>
