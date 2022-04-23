@@ -13,16 +13,26 @@ const TOKENS = [
   'https://sdk.raydium.io/icons/HCgybxq5Upy8Mccihrp7EsmwwFqYZtrHrsmsKwtGXLgW.png',
 ]
 
-const Farm: FC = (props) => {
+type FarmProps = {
+  pairing: string
+  apy: string
+}
+
+const Farm: FC = ({ pairing, apy }: FarmProps) => {
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
 
   const wallet = useWallet()
 
+  const formattedApy = () => {
+    let sliceIndex = apy.indexOf('.') + 3
+    return apy.slice(0, sliceIndex)
+  }
+
   return (
     <>
-      <div className="w-fit h-fit bg-rose-200 rounded-2xl p-4">
+      <div className="w-fit h-fit bg-rose-200 rounded-2xl p-4 m-2">
         <div className="flex items-center pt-6 pb-2 relative flex-wrap">
           <div className="flex items-center justify-center">
             <div className="flex">
@@ -42,7 +52,7 @@ const Farm: FC = (props) => {
               </div>
             </div>
             <div className="flex flex-col pl-2">
-              <span className="pb-2">REF-wNEAR</span>
+              <span className="pb-2">{pairing}</span>
               <button className="text-xs text-framBorder border border-framBorder rounded w-10 text-center box-content px-1">
                 Detail
               </button>
@@ -57,7 +67,7 @@ const Farm: FC = (props) => {
           <span className="text-sm flex">
             APY <Percent size={16} className="ml-2 cursor-pointer" onClick={handleOpen} />
           </span>
-          <span className="text-xl text-white">93.12%</span>
+          <span className="text-xl text-white">{formattedApy()}%</span>
         </div>
         <div className="my-3.5 border border-t-0" />
         <div className="flex justify-between items-center py-2">
