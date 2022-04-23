@@ -1,5 +1,6 @@
 import { FC } from 'react'
 
+import Link from "next/link";
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui'
 import { useAutoConnect } from '../contexts/AutoConnectProvider'
 
@@ -13,6 +14,18 @@ export const AppBar: FC = (props) => {
         <div className="navbar-start">
           <div className="hidden sm:inline w-22 h-22 md:p-2">
             <h1 className="font-extrabold tracking-widest">BOX</h1>
+          </div>
+        </div>
+
+        {/* Nav Links */}
+        <div className="hidden md:inline md:navbar-center">
+          <div className="flex items-stretch">
+            <Link href="/">
+              <a className="btn btn-ghost btn-sm rounded-btn">Stake</a>
+            </Link>
+            <Link href="/farm">
+              <a className="btn btn-ghost btn-sm rounded-btn">Vault</a>
+            </Link>
           </div>
         </div>
 

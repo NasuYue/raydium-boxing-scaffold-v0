@@ -29,7 +29,7 @@ function getLPTokenByAddr(addr: string): any {
 }
 
 const main = async () => {
-  console.log(`Start raydium test script, SDK version: ${version}`)
+  // console.log(`Start raydium test script, SDK version: ${version}`)
   const connection = new Connection(rpcHost)
   const { data } = await axios.get(`${apiHost}/v2/main/pairs`)
   const pools = data
@@ -48,7 +48,7 @@ const main = async () => {
       return pool.length > 0
     })
     .map(jsonInfo2PoolKeys)
-  console.log(`Total count: ${pools.length} ${farmInfos.length}`)
+  // console.log(`Total count: ${pools.length} ${farmInfos.length}`)
   const rawFarmInfo = await Farm.fetchMultipleInfo({
     connection,
     pools: farmInfos,

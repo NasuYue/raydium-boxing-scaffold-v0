@@ -32,7 +32,7 @@ const Farm: FC<FarmProps> = ({ pairing, apy }: FarmProps) => {
 
   return (
     <>
-      <div className="w-fit h-fit bg-rose-200 rounded-2xl p-4 m-2">
+      <div className="w-1/4 h-fit bg-rose-200 rounded-2xl p-4 m-2">
         <div className="flex items-center pt-6 pb-2 relative flex-wrap">
           <div className="flex items-center justify-center">
             <div className="flex">
