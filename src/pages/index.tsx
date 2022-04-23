@@ -3,7 +3,7 @@ import Head from 'next/head'
 
 const Home: NextPage = (props) => {
   return (
-    <div>
+    <div className="flex justify-center self-center">
       <Head>
         <title>Box: A Raydium Solution</title>
         <meta name="description" content="Box: A Raydium Solution" />
