@@ -9,7 +9,6 @@ const Home: NextPage = (props) => {
         <title>Box: A Raydium Solution</title>
         <meta name="description" content="Box: A Raydium Solution" />
       </Head>
-
       <Stake/>
     </div>
   )
