@@ -17,7 +17,7 @@ const AllFarms: FC = () => {
 
   return (
     <div className="flex flex-wrap items-center justify-center m-6">
-      {Object.entries(data).map(([key, value]) => (
+      {Object.entries(data).map(([key, value]: [string, string]) => (
         <Farm key={key} pairing={key} apy={value} />
       ))}
     </div>
