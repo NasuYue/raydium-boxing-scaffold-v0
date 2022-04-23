@@ -3,7 +3,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import calculateApy from '../../libs/calculateApy'
 
 type Data = {
-  data: {
+  data?: {
     'RAY-SRM': string
     'RAY-soETH': string
     'RAY-USDC': string
@@ -15,7 +15,7 @@ type Data = {
     'mSOL-USDC': string
     'stSOL-USDC': string
   }
-  error: string
+  error?: string
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {

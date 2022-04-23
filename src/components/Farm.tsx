@@ -18,7 +18,7 @@ type FarmProps = {
   apy: string
 }
 
-const Farm: FC = ({ pairing, apy }: FarmProps) => {
+const Farm: FC<FarmProps> = ({ pairing, apy }: FarmProps) => {
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)

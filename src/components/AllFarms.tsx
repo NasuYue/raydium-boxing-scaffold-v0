@@ -1,10 +1,10 @@
-import React from 'react'
+import { FC } from 'react'
 import useSwr from 'swr'
 import Farm from './Farm'
 
-const fetcher = (url) => fetch(url).then((res) => res.json())
+const fetcher = (url: string) => fetch(url).then((res) => res.json())
 
-const AllFarms = () => {
+const AllFarms: FC = () => {
   const { data, error } = useSwr('/api/calculate', fetcher)
 
   if (!data) {
