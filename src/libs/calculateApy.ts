@@ -12,7 +12,7 @@ const farmPoolJson = process.env.FARM_POOL_JSON || ''
 
 function whetherIsStakeFarmPool(info: Record<string, any>): boolean {
   return (
-    info.state.perSlotRewards.length === 1 && String(info.lpMint) === '4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R'
+    info.state.perSlotRewards.length === 1 && String(info.lpVault.mint) === '4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R'
   )
 }
 
