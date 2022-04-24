@@ -122,7 +122,14 @@ const calculateApy = () =>
       let result = {}
       for (let i = 0; i < farms.length; i++) {
         const farm = farms[i]
-        result[farm.lpPool.name] = { ...farm, realApr: farm.realApr.toString() }
+        const state = {
+          ...farm.state,
+          lastSlot: new BNJS(farm.state.lastSlot),
+          perShareRewards: [new BNJS(farm.state.perShareRewards)],
+          perSlotRewards: [new BNJS(farm.state.perSlotRewards)],
+          totalRewards: [new BNJS(farm.state.totalRewards)],
+        }
+        result[farm.lpPool.name] = { ...farm, state, realApr: new BNJS(farm.realApr) }
       }
       return result
     })
