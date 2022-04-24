@@ -26,7 +26,7 @@ Website: https://raydium-boxing-scaffold-v0.vercel.app
 
 [Hackathon Demo Day Slides](https://docs.google.com/presentation/d/1wKvUq0c20kgNmBh2g5DMfLtzM5SNLXKKAd1ruynEogA/edit#slide=id.g12599886e27_0_45)
 
-Built by Team: Box-in-the-Park ([more about the team](https://github.com/danhsucowboy/raydium-boxing-scaffold-v0/edit/main/README.md#authors-and-acknowledgment))
+Built by [Team: Box-in-the-Park](#authors-and-acknowledgment)
 
 ![Screen Shot 2022-04-24 at 11 56 25 PM](https://user-images.githubusercontent.com/46632205/164985178-e429f222-5a82-433d-ace6-af87999b6594.jpg)
 
@@ -85,7 +85,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Built with
 
-Jumpstarted with [Solana dApp Scaffold Next](https://github.com/solana-labs/dapp-scaffold) and deployed on [Vercel](https://vercel.com/).
+Built with [Solana dApp Scaffold Next](https://github.com/solana-labs/dapp-scaffold), [Raydium SDK](https://github.com/raydium-io/raydium-sdk) and deployed on [Vercel](https://vercel.com/).
 
 ## License
 
