@@ -31,11 +31,11 @@ const Stake: FC = (props) => {
       <Image src={boxLogo} width={120} height={120} />
       <Typography variant="h5">
         <div className="flex items-center">
-          EARN MORE BY <ChevronLeft size={32} /> <Typography variant="h4">boxRay</Typography> <ChevronRight size={32} />
+          EARN MORE BY <ChevronLeft size={32} /> <Typography variant="h4">bRAY</Typography> <ChevronRight size={32} />
         </div>
       </Typography>
       <div className="mt-4">
-        <Typography variant="subtitle2">Stake Ray and use boxRay while earning rewards</Typography>
+        <Typography variant="subtitle2">Stake RAY and use bRAY while earning rewards</Typography>
       </div>
       <div className="w-1/2 flex justify-between items-center mt-6 gap-4">
         <div className="basis-1/3 h-28 py-5 px-6 bg-white bg-opacity-25 flex flex-col items-start rounded-2xl">
@@ -44,14 +44,14 @@ const Stake: FC = (props) => {
         </div>
         <div className="basis-2/3 h-28 py-5 px-6 bg-white bg-opacity-25 rounded-2xl flex">
           <div className="basis-2/3">
-            <Typography variant="subtitle1">boxRay Balance</Typography>
+            <Typography variant="subtitle1">bRAY Balance</Typography>
           </div>
           <div className="basis-1/3 flex flex-col items-end">
             <div className="flex">
               <Image src={boxLogo} width={40} height={40} />
               <Typography variant="h4">14.690</Typography>
             </div>
-            <Typography variant="subtitle1">≈ 15.541 Ray</Typography>
+            <Typography variant="subtitle1">≈ 15.541 RAY</Typography>
           </div>
         </div>
       </div>
@@ -76,7 +76,7 @@ const Stake: FC = (props) => {
                   <div className="w-full flex justify-between items-center">
                     <div className="flex justify-between items-center gap-2 bg-black bg-opacity-25 p-2 rounded-md">
                       <Repeat size={16} className="cursor-pointer" />
-                      <Typography variant="subtitle2">1 Ray = 0.xxxx boxRay</Typography>
+                      <Typography variant="subtitle2">1 RAY = 0.xxxx bRAY</Typography>
                     </div>
                     <div className="flex justify-between items-center gap-2">
                       <CreditCard />
@@ -91,19 +91,19 @@ const Stake: FC = (props) => {
                 </div>
                 <div className="basis-1/6 flex items-end">
                   <div className="w-full flex justify-between items-center ">
-                    <Typography variant="h5">Ray</Typography>
+                    <Typography variant="h5">RAY</Typography>
                     <Image src={rayLogo} width={60} height={60} />
                   </div>
                 </div>
               </div>
               <div className="w-full flex flex-col gap-2 mt-10">
                 <div className="w-full flex justify-between items-center">
-                  <Typography variant="subtitle2">boxRay to receive</Typography>
+                  <Typography variant="subtitle2">bRAY to receive</Typography>
 
                   <Typography variant="subtitle2">0</Typography>
                 </div>
                 {wallet.publicKey ? (
-                  <button className="w-full rounded-md py-2 text-base bg-gray-500 p-5">Stake</button>
+                  <button className="w-full rounded-md py-2 text-base bg-gray-500 p-5">STAKE</button>
                 ) : (
                   <WalletMultiButton className="justify-center w-full rounded-md py-2 text-base bg-gray-500 p-5" />
                 )}
@@ -118,7 +118,7 @@ const Stake: FC = (props) => {
                   <div className="w-full flex justify-between items-center">
                     <div className="flex justify-between items-center gap-2 bg-black bg-opacity-25 p-2 rounded-md">
                       <Repeat size={16} className="cursor-pointer" />
-                      <Typography variant="subtitle2">1 boxRay = 1.xxx Ray</Typography>
+                      <Typography variant="subtitle2">1 bRAY = 1.xxx RAY</Typography>
                     </div>
                     <div className="flex justify-between items-center gap-2">
                       <CreditCard />
@@ -133,19 +133,19 @@ const Stake: FC = (props) => {
                 </div>
                 <div className="basis-3/12 flex items-end">
                   <div className="w-full flex justify-between items-center ">
-                    <Typography variant="h5">boxRay</Typography>
+                    <Typography variant="h5">bRAY</Typography>
                     <Image src={boxLogo} width={60} height={60} />
                   </div>
                 </div>
               </div>
               <div className="w-full flex flex-col gap-2 mt-10">
                 <div className="w-full flex justify-between items-center">
-                  <Typography variant="subtitle2">Ray to receive</Typography>
+                  <Typography variant="subtitle2">RAY to receive</Typography>
 
                   <Typography variant="subtitle2">0</Typography>
                 </div>
                 {wallet.publicKey ? (
-                  <button className="w-full rounded-md py-2 text-base bg-gray-500 p-5">Unstake</button>
+                  <button className="w-full rounded-md py-2 text-base bg-gray-500 p-5">UNSTAKE</button>
                 ) : (
                   <WalletMultiButton className="justify-center w-full rounded-md py-2 text-base bg-gray-500 p-5" />
                 )}
