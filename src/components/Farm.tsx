@@ -104,7 +104,7 @@ const Farm: FC<FarmProps> = ({ pairing, farm }: FarmProps) => {
           <WalletMultiButton className="justify-center mt-4 mb-3 w-full rounded-md py-2 text-base bg-gray-500 p-5" />
         )}
       </div>
-      <Calculator pairing={pairing} farmData={farm} isOpen={open} handleClose={handleClose} />
+      <Calculator pairing={pairing} farmData={farm} apy={formattedApy()} isOpen={open} handleClose={handleClose} />
     </>
   )
 }

@@ -23,11 +23,13 @@ const style = {
 const Calculator = ({
   pairing,
   farmData,
+  apy,
   isOpen,
   handleClose,
 }: {
   pairing: string
   farmData: any
+  apy: any
   isOpen: boolean
   handleClose: any
 }) => {
@@ -38,7 +40,7 @@ const Calculator = ({
   const [percentage, setPercentage] = useState<number>(0.0)
   const mockAPY = 0.39
   const apyPerDay = useMemo(() => {
-    return mockAPY / 365
+    return apy / 365
   }, [mockAPY])
 
   const durationList = [1,7,30,90]
