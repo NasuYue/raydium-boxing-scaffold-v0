@@ -8,7 +8,7 @@ import { BRAY_RAY_DATA } from './AllFarms'
 import getTokenIconUrl from 'utils/getTokenIconUrl'
 import { formatIntegerUSDCurrency } from 'utils/numberFormat'
 import aprToApy from 'utils/aprToApy'
-// import calculateTotalRewardsPerWeek from 'utils/calculateTotalRewardsPerWeek'
+import calculateTotalRewardsPerWeek from 'utils/calculateTotalRewardsPerWeek'
 
 type FarmProps = {
   pairing: string
@@ -90,7 +90,7 @@ const Farm: FC<FarmProps> = ({ pairing, farm }: FarmProps) => {
         </div>
         <div className="flex justify-between items-center py-2">
           <span className="text-sm">Rewards per week</span>
-          {/* <span>{calculateTotalRewardsPerWeek({liquidity:lpPool.liquidity, apy:})}</span> */}
+          <span>{calculateTotalRewardsPerWeek(aprToApy(parseInt(realApr), 365 * 8) / 100, lpPool.liquidity)}</span>
         </div>
         <div className="flex justify-between items-center py-2">
           <span className="text-sm">Unclaimed rewards</span>
