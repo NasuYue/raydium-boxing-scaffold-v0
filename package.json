@@ -9,6 +9,14 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "resolutions": {
+    "@types/react": "17.0.38",
+    "@types/react-dom": "^18.0.2"
+  },
+  "overrides": {
+    "@types/react": "17.0.38",
+    "@types/react-dom": "^18.0.2"
+  },
   "dependencies": {
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
@@ -38,6 +46,7 @@
   "devDependencies": {
     "@types/node": "17.0.10",
     "@types/react": "17.0.38",
+    "@types/react-dom": "^18.0.2",
     "autoprefixer": "^10.4.2",
     "eslint": "8.7.0",
     "eslint-config-next": "12.0.8",
