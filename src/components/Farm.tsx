@@ -5,6 +5,7 @@ import { Percent } from 'react-feather'
 import Image from 'next/image'
 import Calculator from './Calculator'
 import getTokenIconUrl from 'utils/getTokenIconUrl'
+import formatNumberToMil from 'utils/formatNumberToMil'
 
 type FarmProps = {
   pairing: string
@@ -17,7 +18,8 @@ const Farm: FC<FarmProps> = ({ pairing, farm }: FarmProps) => {
   const handleClose = () => setOpen(false)
 
   const wallet = useWallet()
-  const { realApr, rewardMints, lpToken } = farm
+  const { realApr, rewardMints, lpToken, lpPool } = farm
+  console.log({ pairing, farm })
 
   const formattedApy = () => {
     let sliceIndex = realApr.indexOf('.') + 3
@@ -57,7 +59,7 @@ const Farm: FC<FarmProps> = ({ pairing, farm }: FarmProps) => {
         </div>
         <div className="flex justify-between items-center py-2">
           <span className="text-sm">Total Staked:</span>
-          <span className="text-xl text-white">$14.12M</span>
+          <span className="text-xl text-white">${formatNumberToMil(lpPool.liquidity)}</span>
         </div>
         <div className="flex justify-between items-center py-2">
           <span className="text-sm flex">
