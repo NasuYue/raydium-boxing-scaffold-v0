@@ -18,7 +18,7 @@ const style = {
   },
 }
 
-const Calculator = ({isOpen, handleClose}:{isOpen: boolean; handleClose: any;}) => {
+const Calculator = ({pairing, farmData, isOpen, handleClose}:{pairing:string; farmData:any; isOpen: boolean; handleClose: any;}) => {
   const [tab, setTab] = useState(0)
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
@@ -44,7 +44,7 @@ const Calculator = ({isOpen, handleClose}:{isOpen: boolean; handleClose: any;}) 
 
           {/* Staked block */}
           <div className="flex flex-col justify-between items-start mt-6 w-full">
-            <Typography variant="subtitle1">XXXX-XXXX LP staked</Typography>
+            <Typography variant="subtitle1">{pairing} LP staked</Typography>
             <div className="flex justify-between items-center rounded px-5 py-2.5 bg-black bg-opacity-25 mt-2.5 w-full">
               <div className="flex flex-col flex-grow w-1/5">
                 <span className="flex items-center text-lg text-white">
