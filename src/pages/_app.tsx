@@ -13,9 +13,9 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <>
       <Head>
-        <title>Solana Scaffold Lite</title>
+        <title>Box: A Raydium Solution</title>
+        <meta name="description" content="Box: A Raydium Solution" />
       </Head>
-
       <ContextProvider>
         <div className="flex flex-col h-screen">
           <Notifications />

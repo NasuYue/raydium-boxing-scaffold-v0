@@ -8,7 +8,6 @@ const USDFormatter = new Intl.NumberFormat('en-US', {
 
 export const formatIntegerUSDCurrency = (number: number) => {
   let parsedInt = USDFormatter.format(number)
-  let format = parsedInt.split(',')
 
   return parsedInt
 }
