@@ -1,6 +1,8 @@
-import { FC, useState } from 'react'
+import { FC, useEffect, useMemo, useState } from 'react'
 import { Box, Typography, Modal, Tabs, Tab } from '@mui/material'
 import { X as Close, Repeat } from 'react-feather'
+import Image from 'next/image'
+import getTokenIconUrl from 'utils/getTokenIconUrl'
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -18,8 +20,38 @@ const style = {
   },
 }
 
-const Calculator = ({pairing, farmData, isOpen, handleClose}:{pairing:string; farmData:any; isOpen: boolean; handleClose: any;}) => {
+const Calculator = ({
+  pairing,
+  farmData,
+  isOpen,
+  handleClose,
+}: {
+  pairing: string
+  farmData: any
+  isOpen: boolean
+  handleClose: any
+}) => {
   const [tab, setTab] = useState(0)
+  const { realApr, rewardMints, lpToken } = farmData
+  const [usdValue, setUsdValue] = useState<number>(0)
+  const [shares, setShares] = useState<number>(0.0)
+  const [percentage, setPercentage] = useState<number>(0.0)
+  const mockAPY = 0.39
+  const apyPerDay = useMemo(() => {
+    return mockAPY / 365
+  }, [mockAPY])
+
+  const durationList = [1,7,30,90]
+
+  useEffect(() => {
+    console.log(farmData)
+  }, [farmData])
+
+  const handleCounting = (newValue: number) => {
+    setUsdValue(newValue)
+    setShares((newValue / farmData.lpPool.liquidity) * farmData.lpPool.tokenAmountLp)
+    setPercentage((newValue / farmData.lpPool.liquidity) * 100)
+  }
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setTab(newValue)
@@ -51,6 +83,9 @@ const Calculator = ({pairing, farmData, isOpen, handleClose}:{pairing:string; fa
                   <label>$</label>
                   <input
                     type="number"
+                    onChange={(e) => {
+                      handleCounting(+e.currentTarget.value)
+                    }}
                     className="w-28 text-lg ml-2 text-white bg-transparent border-none focus:ring-0 focus:outline-none"
                     placeholder="0.0"
                   />
@@ -62,6 +97,7 @@ const Calculator = ({pairing, farmData, isOpen, handleClose}:{pairing:string; fa
                 <span>
                   <input
                     type="number"
+                    value={shares === 0 ? '' : shares.toFixed(2)}
                     className="w-28 text-lg text-white bg-transparent border-none focus:ring-0 focus:outline-none"
                     placeholder="0.0"
                   />
@@ -98,19 +134,34 @@ const Calculator = ({pairing, farmData, isOpen, handleClose}:{pairing:string; fa
           <div className="flex flex-col justify-between items-start mt-6 w-full">
             <div className="flex justify-between items-center w-full">
               <Typography variant="subtitle1">ROI</Typography>
-              <Typography variant="subtitle1">- %</Typography>
+              <Typography variant="subtitle1">{usdValue === 0 ? '-' : (apyPerDay*durationList[tab]).toFixed(4)} %</Typography>
             </div>
             <div className="flex flex-col justify-start items-center rounded px-5 py-2.5 bg-black bg-opacity-25 mt-2.5 w-full h-48">
               <div className="flex justify-between items-center w-full">
-                <Typography variant="subtitle2" style={{color: '#DFDFDE'}}>Shares</Typography>
-                <Typography variant="subtitle2" style={{color: '#DFDFDE'}}>- (-%)</Typography>
+                <Typography variant="subtitle2" style={{ color: '#DFDFDE' }}>
+                  Shares
+                </Typography>
+                <Typography variant="subtitle2" style={{ color: '#DFDFDE' }}>
+                  {shares.toFixed(2)} ({percentage < 0.001 ? ' < 0.001' : percentage.toFixed(2)}%)
+                </Typography>
               </div>
               <div className="flex justify-between items-center w-full mt-6">
-                <Typography variant="subtitle2" style={{color: '#DFDFDE'}}>Value of rewards</Typography>
-                <Typography variant="subtitle2" style={{color: '#DFDFDE'}}>$ -</Typography>
+                <Typography variant="subtitle2" style={{ color: '#DFDFDE' }}>
+                  Value of rewards
+                </Typography>
+                <Typography variant="subtitle2" style={{ color: '#DFDFDE' }}>
+                  $ {usdValue === 0 ? '-' : (apyPerDay*durationList[tab]*usdValue).toFixed(4)}
+                </Typography>
               </div>
-              <div className="flex justify-start items-center w-full mt-6">
-                <Typography variant="subtitle2" style={{color: '#DFDFDE'}}>Reward tokens</Typography>
+              <div className="flex justify-between items-center w-full mt-6">
+                <Typography variant="subtitle2" style={{ color: '#DFDFDE' }}>
+                  Reward tokens
+                </Typography>
+                {rewardMints.map((mints: string) => (
+                  <div className="relative h-6 w-6 ml-1.5 my-px">
+                    <Image key={mints} src={getTokenIconUrl(mints)} layout="fill" className="rounded-full" width={20} height={20}/>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
