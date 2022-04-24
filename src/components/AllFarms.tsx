@@ -7,14 +7,14 @@ const fetcher = (url: string) => fetch(url).then((res) => res.json())
 
 const RAY_MINT = '4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R'
 
-const BRAY_RAY_DATA = {
+export const BRAY_RAY_DATA = {
   pairing: 'bRAY-RAY',
   lpToken: {
     base: { src: boxLogo },
     quote: { mint: RAY_MINT },
   },
   lpPool: { liquidity: 123456787 },
-  rewardMints: ['a'],
+  rewardMints: [boxLogo],
   realApr: '88.88',
 }
 
