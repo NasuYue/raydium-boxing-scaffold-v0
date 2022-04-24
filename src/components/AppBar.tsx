@@ -4,6 +4,9 @@ import Link from 'next/link'
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui'
 import { useAutoConnect } from '../contexts/AutoConnectProvider'
 
+import Image from 'next/image'
+import boxLogo from '../assets/symbal/box.png'
+
 export const AppBar: FC = (props) => {
   const { autoConnect, setAutoConnect } = useAutoConnect()
 
@@ -23,7 +26,10 @@ export const AppBar: FC = (props) => {
             </svg>
           </label>
           <div className="hidden sm:inline w-22 h-22 md:p-2">
-            <h1 className="font-extrabold tracking-widest">BOX</h1>
+            <div className="flex">
+              <Image src={boxLogo} width={40} height={40} />
+              <h1 className="font-extrabold tracking-widest ml-1">BOX</h1>
+            </div>
           </div>
         </div>
 
