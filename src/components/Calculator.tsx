@@ -3,6 +3,7 @@ import { Box, Typography, Modal, Tabs, Tab } from '@mui/material'
 import { X as Close, Repeat } from 'react-feather'
 import Image from 'next/image'
 import getTokenIconUrl from 'utils/getTokenIconUrl'
+import { formatIntegerUSDCurrency } from 'utils/numberFormat'
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -150,7 +151,7 @@ const Calculator = ({
                   Value of rewards
                 </Typography>
                 <Typography variant="subtitle2" style={{ color: '#DFDFDE' }}>
-                  $ {usdValue === 0 ? '-' : (apyPerDay * durationList[tab] * usdValue).toFixed(4)}
+                  $ {usdValue === 0 ? '-' : (apyPerDay * durationList[tab] * usdValue/100).toFixed(4)}
                 </Typography>
               </div>
               <div className="flex justify-between items-center w-full mt-6">
