@@ -22,7 +22,6 @@ const Farm: FC<FarmProps> = ({ pairing, farm }: FarmProps) => {
 
   const wallet = useWallet()
   const { realApr, rewardMints, lpToken, lpPool } = farm
-  console.log({ pairing, farm })
 
   const formattedApy = () => {
     const apy = aprToApy(parseInt(realApr), 365 * 8)

@@ -43,11 +43,7 @@ const Calculator = ({
     return apy / 365
   }, [mockAPY])
 
-  const durationList = [1,7,30,90]
-
-  useEffect(() => {
-    console.log(farmData)
-  }, [farmData])
+  const durationList = [1, 7, 30, 90]
 
   const handleCounting = (newValue: number) => {
     setUsdValue(newValue)
@@ -136,7 +132,9 @@ const Calculator = ({
           <div className="flex flex-col justify-between items-start mt-6 w-full">
             <div className="flex justify-between items-center w-full">
               <Typography variant="subtitle1">ROI</Typography>
-              <Typography variant="subtitle1">{usdValue === 0 ? '-' : (apyPerDay*durationList[tab]).toFixed(4)} %</Typography>
+              <Typography variant="subtitle1">
+                {usdValue === 0 ? '-' : (apyPerDay * durationList[tab]).toFixed(4)} %
+              </Typography>
             </div>
             <div className="flex flex-col justify-start items-center rounded px-5 py-2.5 bg-black bg-opacity-25 mt-2.5 w-full h-48">
               <div className="flex justify-between items-center w-full">
@@ -152,7 +150,7 @@ const Calculator = ({
                   Value of rewards
                 </Typography>
                 <Typography variant="subtitle2" style={{ color: '#DFDFDE' }}>
-                  $ {usdValue === 0 ? '-' : (apyPerDay*durationList[tab]*usdValue).toFixed(4)}
+                  $ {usdValue === 0 ? '-' : (apyPerDay * durationList[tab] * usdValue).toFixed(4)}
                 </Typography>
               </div>
               <div className="flex justify-between items-center w-full mt-6">
@@ -161,7 +159,14 @@ const Calculator = ({
                 </Typography>
                 {rewardMints.map((mints: string) => (
                   <div className="relative h-6 w-6 ml-1.5 my-px">
-                    <Image key={mints} src={getTokenIconUrl(mints)} layout="fill" className="rounded-full" width={20} height={20}/>
+                    <Image
+                      key={mints}
+                      src={getTokenIconUrl(mints)}
+                      layout="fill"
+                      className="rounded-full"
+                      width={20}
+                      height={20}
+                    />
                   </div>
                 ))}
               </div>
