@@ -38,11 +38,12 @@ const Stake: FC = (props) => {
         <Typography variant="subtitle2">Stake RAY and use bRAY while earning rewards</Typography>
       </div>
       <div className="w-1/2 flex justify-between items-center mt-6 gap-4">
-        <div className="basis-1/3 h-28 py-5 px-6 bg-white bg-opacity-25 flex flex-col items-start rounded-2xl">
+        <div className="basis-1/3 h-32 py-5 px-6 bg-white bg-opacity-25 flex flex-col items-start rounded-2xl">
           <Typography variant="subtitle1">Staking APY</Typography>
           <Typography variant="h4">19.51%</Typography>
+          <Typography variant="subtitle2">Raydium APR: 17.83%</Typography>
         </div>
-        <div className="basis-2/3 h-28 py-5 px-6 bg-white bg-opacity-25 rounded-2xl flex">
+        <div className="basis-2/3 h-32 py-5 px-6 bg-white bg-opacity-25 rounded-2xl flex">
           <div className="basis-2/3">
             <Typography variant="subtitle1">bRAY Balance</Typography>
           </div>
