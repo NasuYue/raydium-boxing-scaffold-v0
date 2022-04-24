@@ -6,14 +6,6 @@ import Image from 'next/image'
 import Calculator from './Calculator'
 import getTokenIconUrl from 'utils/getTokenIconUrl'
 
-const TOKENS = [
-  'https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/5LSFpvLDkcdV2a3Kiyzmg5YmJsj2XDLySaXvnfP1cgLT/logo.png',
-  'https://sdk.raydium.io/icons/9nEqaUcb16sQ3Tn1psbkWqyhPdLmfHWjKGymREjsAgTE.png',
-  'https://sdk.raydium.io/icons/ArUkYE2XDKzqy77PRRGjo4wREWwqk6RXTfM9NeqzPvjU.png',
-  'https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/Ce3PSQfkxT5ua4r2JqCoWYrMwKWC5hEzwsrT9Hb7mAz9/DATE.svg',
-  'https://sdk.raydium.io/icons/HCgybxq5Upy8Mccihrp7EsmwwFqYZtrHrsmsKwtGXLgW.png',
-]
-
 type FarmProps = {
   pairing: string
   apy: string
