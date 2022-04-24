@@ -8,20 +8,20 @@ import getTokenIconUrl from 'utils/getTokenIconUrl'
 
 type FarmProps = {
   pairing: string
-  apy: string
-  rewardMints: Array<String>
+  farm: any
 }
 
-const Farm: FC<FarmProps> = ({ pairing, apy, rewardMints }: FarmProps) => {
+const Farm: FC<FarmProps> = ({ pairing, farm }: FarmProps) => {
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
 
   const wallet = useWallet()
+  const { realApr, rewardMints, lpToken } = farm
 
   const formattedApy = () => {
-    let sliceIndex = apy.indexOf('.') + 3
-    return apy.slice(0, sliceIndex)
+    let sliceIndex = realApr.indexOf('.') + 3
+    return realApr.slice(0, sliceIndex)
   }
 
   return (
@@ -32,16 +32,18 @@ const Farm: FC<FarmProps> = ({ pairing, apy, rewardMints }: FarmProps) => {
             <div className="flex">
               <div className="relative h-11 w-11 rounded-full border">
                 <Image
-                  src="https://sdk.raydium.io/icons/2FPyTwcZLUg1MDrwsyoP4D6s1tM7hAkHYRjkNb5w6Pxk.png"
                   className="rounded-full"
                   layout="fill"
+                  src={getTokenIconUrl(lpToken.base.mint)}
+                  alt={lpToken.base.name}
                 />
               </div>
               <div className="relative h-11 w-11 rounded-full border -ml-1.5">
                 <Image
                   className="rounded-full"
-                  src="https://sdk.raydium.io/icons/2wmKXX1xsxLfrvjEPrt2UHiqj8Gbzwxvffr9qmNjsw8g.png"
                   layout="fill"
+                  src={getTokenIconUrl(lpToken.quote.mint)}
+                  alt={lpToken.quote.name}
                 />
               </div>
             </div>
@@ -80,7 +82,7 @@ const Farm: FC<FarmProps> = ({ pairing, apy, rewardMints }: FarmProps) => {
         </div>
         <div className="flex justify-between items-center py-2">
           <span className="text-sm">Unclaimed rewards</span>
-          <span>93.12%</span>
+          <span>-</span>
         </div>
         {wallet.publicKey ? (
           <button className="mt-4 mb-3 w-full rounded-full py-2 text-base bg-rose-300 p-5" onClick={handleOpen}>
