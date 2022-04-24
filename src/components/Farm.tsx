@@ -4,6 +4,7 @@ import { useWallet } from '@solana/wallet-adapter-react'
 import { Percent } from 'react-feather'
 import Image from 'next/image'
 import Calculator from './Calculator'
+import getTokenIconUrl from 'utils/getTokenIconUrl'
 
 const TOKENS = [
   'https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/5LSFpvLDkcdV2a3Kiyzmg5YmJsj2XDLySaXvnfP1cgLT/logo.png',
@@ -16,9 +17,10 @@ const TOKENS = [
 type FarmProps = {
   pairing: string
   apy: string
+  rewardMints: Array<String>
 }
 
-const Farm: FC<FarmProps> = ({ pairing, apy }: FarmProps) => {
+const Farm: FC<FarmProps> = ({ pairing, apy, rewardMints }: FarmProps) => {
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
@@ -73,9 +75,9 @@ const Farm: FC<FarmProps> = ({ pairing, apy }: FarmProps) => {
         <div className="flex justify-between items-center py-2">
           <span className="text-sm">Reward Tokens</span>
           <span className="flex">
-            {TOKENS.map((src) => (
+            {rewardMints.map((mints: string) => (
               <div className="relative h-5 w-5 ml-1.5 my-px">
-                <Image key={src} src={src} layout="fill" className="rounded-full" />
+                <Image key={mints} src={getTokenIconUrl(mints)} layout="fill" className="rounded-full" />
               </div>
             ))}
           </span>
