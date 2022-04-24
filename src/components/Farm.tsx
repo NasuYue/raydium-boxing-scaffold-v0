@@ -7,7 +7,7 @@ import Calculator from './Calculator'
 import { BRAY_RAY_DATA } from './AllFarms'
 import getTokenIconUrl from 'utils/getTokenIconUrl'
 import { formatIntegerUSDCurrency } from 'utils/numberFormat'
-// import aprToApy from 'utils/aprToApy'
+import aprToApy from 'utils/aprToApy'
 // import calculateTotalRewardsPerWeek from 'utils/calculateTotalRewardsPerWeek'
 
 type FarmProps = {
@@ -24,12 +24,10 @@ const Farm: FC<FarmProps> = ({ pairing, farm }: FarmProps) => {
   const { realApr, rewardMints, lpToken, lpPool } = farm
   console.log({ pairing, farm })
 
-  // WIP
   const formattedApy = () => {
-    // console.log({ apr: toDecimal(realApr), realApr })
-    // const apy = aprToApy(23, 365)
-    // let sliceIndex = apy.indexOf('.') + 3
-    // return realApr.slice(0, sliceIndex)
+    const apy = aprToApy(parseInt(realApr), 365 * 8)
+    let sliceIndex = apy.toString().indexOf('.') + 3
+    return realApr.slice(0, sliceIndex)
   }
 
   return (
