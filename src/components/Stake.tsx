@@ -40,7 +40,7 @@ const Stake: FC = (props) => {
       <div className="w-1/2 flex justify-between items-center mt-6 gap-4">
         <div className="basis-1/3 h-28 py-5 px-6 bg-white bg-opacity-25 flex flex-col items-start rounded-2xl">
           <Typography variant="subtitle1">Staking APY</Typography>
-          <Typography variant="h4">19.25%</Typography>
+          <Typography variant="h4">19.51%</Typography>
         </div>
         <div className="basis-2/3 h-28 py-5 px-6 bg-white bg-opacity-25 rounded-2xl flex">
           <div className="basis-2/3">
@@ -76,7 +76,7 @@ const Stake: FC = (props) => {
                   <div className="w-full flex justify-between items-center">
                     <div className="flex justify-between items-center gap-2 bg-black bg-opacity-25 p-2 rounded-md">
                       <Repeat size={16} className="cursor-pointer" />
-                      <Typography variant="subtitle2">1 RAY = 0.xxxx bRAY</Typography>
+                      <Typography variant="subtitle2">1 RAY = 0.9452 bRAY</Typography>
                     </div>
                     <div className="flex justify-between items-center gap-2">
                       <CreditCard />
@@ -118,7 +118,7 @@ const Stake: FC = (props) => {
                   <div className="w-full flex justify-between items-center">
                     <div className="flex justify-between items-center gap-2 bg-black bg-opacity-25 p-2 rounded-md">
                       <Repeat size={16} className="cursor-pointer" />
-                      <Typography variant="subtitle2">1 bRAY = 1.xxx RAY</Typography>
+                      <Typography variant="subtitle2">1 bRAY = 1.0579 RAY</Typography>
                     </div>
                     <div className="flex justify-between items-center gap-2">
                       <CreditCard />
