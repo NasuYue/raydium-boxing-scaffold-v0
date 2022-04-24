@@ -1,6 +1,6 @@
 import { Connection } from '@solana/web3.js'
 import { Farm, jsonInfo2PoolKeys, MAINNET_SPL_TOKENS, MAINNET_LP_TOKENS, TokenAmount } from '@raydium-io/raydium-sdk'
-import { version } from '@raydium-io/raydium-sdk/lib/version'
+// import { version } from '@raydium-io/raydium-sdk/lib/version'
 import axios from 'axios'
 import BNJS from 'bignumber.js'
 
@@ -122,7 +122,7 @@ const calculateApy = () =>
       let result = {}
       for (let i = 0; i < farms.length; i++) {
         const farm = farms[i]
-        result[farm.lpPool.name] = farm.realApr.toString()
+        result[farm.lpPool.name] = { ...farm, realApr: farm.realApr.toString() }
       }
       return result
     })
